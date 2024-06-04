@@ -1,20 +1,17 @@
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
-import java.util.Scanner;
-import java.util.function.Function;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.Serializable;
+
 
 public class UserManagement {
     private static final String FILE_NAME = "user.dat";
     private static final Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
         List<User> userList = new ArrayList<>();
-        loadUsersFromFile(userList);
+        printAllUsersFromFile(userList);
+        
 
         boolean exit = false;
         while (!exit) {
@@ -51,7 +48,7 @@ public class UserManagement {
                     saveUsersToFile(userList);
                     break;
                 case 6:
-                    printUserList(userList);
+                    printAllUsersFromFile(userList);
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -59,42 +56,16 @@ public class UserManagement {
         }
     }
 
-    @SuppressWarnings("unused")
-    private static boolean askToExit() {
-        System.out.print("Do you want to exit? (yes/no): ");
-        String answer = scanner.next().toLowerCase();
-        if (answer.equals("yes") || answer.equals("y")) {
-            System.out.println("Exiting program...");
-            return true;
-        } else if (answer.equals("no") || answer.equals("n")) {
-            System.out.println("Returning to the main menu...");
-        } else {
-            System.out.println("Invalid input. Assuming 'no'.");
-        }
-        return false;
-    }
-
-    private static void printUserList(List<User> userList) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'printUserList'");
-    }
-
-    private static void updateUser(List<User> userList) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'updateUser'");
-    }
-
-    @SuppressWarnings("unchecked")
-    private static void loadUsersFromFile(List<User> userList) {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
-            userList.addAll((List<User>) ois.readObject());
-            System.out.println("Users loaded from file.");
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("No existing user file found. Starting with an empty user list.");
-        }
-    }
+    
     
     // Assuming you have a User class
+
+    private static void updateUser(List<User> userList) {
+        System.out.println("Update User");
+        // Implement update logic
+    }
+
+
 
     private static void saveUsersToFile(List<User> userList) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
@@ -334,7 +305,7 @@ public class UserManagement {
     scanner.nextLine(); // Wait for Enter key press
 }
 
-    private static void printAllUsersFromFile() {
+    private static void printAllUsersFromFile(List<User> userList2) {
     List<User> userList = new ArrayList<>();
 
     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
@@ -364,83 +335,65 @@ public class UserManagement {
     }
 
     // Sort userList by first name
-    Collections.sort(userList, Comparator.comparing(UserManagement::extracted));
 
     System.out.println("User list from file:");
     for (User user : userList) {
         System.out.println(user);
     }
-    
 
     // Ask to go back to the main menu
     System.out.println("Press Enter to go back to the main menu...");
     scanner.nextLine(); // Wait for Enter key press
     }
 
-    @SuppressWarnings("unused")
-    private static Object extracted(User t) {
-        return t.getFirstName();
-    }
-
 }
     
-    
-
-class User implements Serializable {
+    class User implements Serializable {
     private String username;
     private String password; // You might want to encrypt this
+    private String firstName;
+    private String lastName;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    // Getters and setters
-
-    public Object getFirstName() {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'getFirstName'");
-    }
-
-    public void setEmail(String newEmail) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'setEmail'");
-    }
-
-    public void setPhoneNumber(String newPhoneNumber) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'setPhoneNumber'");
-    }
-
-    public void setLastName(String newLastName) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'setLastName'");
-    }
-
-    public void setPassword(String newPassword) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'setPassword'");
+    public String getFirstName() {
+        return firstName;
     }
 
     public void setFirstName(String newFirstName) {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'setFirstName'");
+        this.firstName = newFirstName;
+    }
+
+    public void setEmail(String newEmail) {
+        // Implementation for setEmail
+    }
+
+    public void setPhoneNumber(String newPhoneNumber) {
+        // Implementation for setPhoneNumber
+    }
+
+    public void setLastName(String newLastName) {
+        this.lastName = newLastName;
+    }
+
+    public void setPassword(String newPassword) {
+        // Implementation for setPassword
     }
 
     public String getLastName() {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'getLastName'");
+        return lastName;
     }
 
-    public Object getUsername() {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
+    public String getUsername() {
+        return username;
     }
-
+    
     @Override
     public String toString() {
-        return "Username: " + username + ", Password: " + password;
+        return "Username: " + username + ", Password: " + password + ", First Name: " + firstName + ", Last Name: " + lastName;
     }
 }
-
 
