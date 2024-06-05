@@ -5,11 +5,15 @@ class User implements Serializable {
     private String password; // You might want to encrypt this
     private String firstName;
     private String lastName;
+    private String phone;
+    private String email;
     public User(String username, String firstName, String lastName, String password, String phone, String email) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
+        this.phone = phone;
+        this.email = email;
     }
     
 
@@ -18,41 +22,14 @@ class User implements Serializable {
     }
 
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String newFirstName) {
-        this.firstName = newFirstName;
-    }
-
-    public void setEmail(String newEmail) {
-        // Implementation for setEmail
-    }
-
-    public void setPhoneNumber(String newPhoneNumber) {
-        // Implementation for setPhoneNumber
-    }
-
-    public void setLastName(String newLastName) {
-        this.lastName = newLastName;
-    }
-
-    public void setPassword(String newPassword) {
-        // Implementation for setPassword
-    }
-
-    public String getLastName() {
-        return lastName;
+   
+    @Override
+    public String toString() {
+        return username + ","  + firstName + "," + lastName+","+password+ "," +phone+","+email;
     }
 
     public String getUsername() {
         return username;
-    }
-    
-    @Override
-    public String toString() {
-        return "Username: " + username + ", Password: " + password + ", First Name: " + firstName + ", Last Name: " + lastName;
     }
 
     public void setUsername(String username) {
@@ -63,17 +40,49 @@ class User implements Serializable {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public String getPhone() {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'getPhone'");
+        return phone;
     }
 
-
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getEmail() {
-        
-        throw new UnsupportedOperationException("Unimplemented method 'getEmail'");
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    void getPhone(String userDetail) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
+   
+
+
+
+
+
