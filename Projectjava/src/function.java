@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -20,7 +19,7 @@ import java.util.Scanner;
  *
  * @author 
  */
-public class function {
+public class Function {
     ArrayList<User> database = new ArrayList();
     
      public  void createUser() {

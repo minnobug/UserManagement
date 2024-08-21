@@ -1,8 +1,8 @@
 
 import java.util.Scanner;
-public class main {
-    public static void main (String[] args) {
-            function User = new function();
+public class Main {
+    public static void Main (String[] args) {
+            Function User = new Function();
             Scanner scanner = new Scanner(System.in);
             String choice = "-1";     
                 User.readFromFile();
