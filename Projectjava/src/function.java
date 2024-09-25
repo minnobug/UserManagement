@@ -63,12 +63,7 @@ public class Function {
          User.setEmail(email);
         database.add(User);
         System.out.println("User created successfully.");
-//
-//        System.out.println("Do you want to go back to the main menu? (Y/N)");
-//        String choice = scanner.nextLine().toUpperCase();
-//        if (choice.equals("Y")) {
-//            // Call method to go back to main menu
-//        }
+
     }
       private static boolean isValidUsername(String username) {
         return username.length() >= 5 && !username.contains(" ");
